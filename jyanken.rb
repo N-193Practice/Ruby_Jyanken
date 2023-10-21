@@ -4,43 +4,42 @@ PAPER = 'パー'
 SCISSORS = 'チョキ'
 NOFIGHT = '戦わない'
 
+
 # じゃんけんの関数
 def play_janken
-  puts 'じゃんけんの手を選んでください (0: グー, 1: チョキ, 2: パー, 3: 戦わない):'
+  puts 'じゃんけんの手を選んでください (0: グー, 1: チョキ, 2: パー, 3:戦わない):'
   player_choice = gets.chomp.to_i
-  # 相手プレイヤーがランダムで手を選ぶ
-  computer_choice = [ROCK, PAPER, SCISSORS, NOFIGHT].sample
 
-  player_hand = [ROCK, SCISSORS, PAPER, NOFIGHT][player_choice]
+  player_hand = [ROCK, SCISSORS, PAPER,NOFIGHT][player_choice]
+  # 相手の出す手をランダムにする
+  computer_choice = [ROCK, PAPER, SCISSORS,NOFIGHT].sample
   puts "あなたの手: #{player_hand}"
   puts "相手の手: #{computer_choice}"
 
   if player_hand == computer_choice
-    puts '引き分けです.'
-    return play_janken
-  elsif player_hand == NOFIGHT || computer_choice == NOFIGHT
-    puts '戦わないを選びました。戦いを回避します.'
-    return play_janken
+    puts '引き分けです。（じゃんけん終了です）'
+  elsif player_hand == NOFIGHT ||  computer_choice == NOFIGHT
+    puts '戦わない。（じゃんけん終了です）'
   else
     # プレイヤーがじゃんけんに勝った時
     if (player_hand == ROCK && computer_choice == SCISSORS) ||
        (player_hand == SCISSORS && computer_choice == PAPER) ||
        (player_hand == PAPER && computer_choice == ROCK)
-      puts 'じゃんけんに勝利しました。あっち向いてホイの指を選択してください。'
+      puts 'じゃんけんに勝利しました。あっち向いてホイの指を選択してください.'
       your_choice = play_atchi_muite_hoi
       if your_choice == computer_choice
-        puts 'あなたの勝利です。(じゃんけん終了)'
+        puts 'あなたの勝利です。（じゃんけん終了です）'
       else
-        puts 'あなたはあっち向いてホイに失敗しました。(じゃんけんの最初に戻ります)'
+        puts 'あなたはあっち向いてホイに失敗しました。'
         return play_janken
       end
     else
-      puts '相手がじゃんけんに勝利しました。あっち向いてホイの顔の向きを選択してください。'
+      puts '相手がじゃんけんに勝利しました。あっち向いてホイの顔の向きを選択してください.'
       your_choice = play_atchi_muite_hoi
       if your_choice == computer_choice
-        puts '相手の勝利です。(じゃんけん終了)'
+        puts '相手の勝利です。（じゃんけん終了です）'
       else
-        puts '相手があっち向いてホイに失敗しました。(じゃんけんの最初に戻ります)'
+        puts '相手があっち向いてホイに失敗しました。'
         return play_janken
       end
     end
@@ -58,4 +57,3 @@ end
 
 # ゲーム開始
 play_janken
-
