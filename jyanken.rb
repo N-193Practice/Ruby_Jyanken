@@ -11,16 +11,16 @@ def play_janken
 
   player_hand = [ROCK, SCISSORS, PAPER, NOFIGHT][player_choice]
   # 相手の出す手をランダムにする
-  computer_hand = [ROCK, PAPER, SCISSORS, NOFIGHT].sample
+  computer_hand = [ROCK, PAPER, SCISSORS].sample
   puts "あなたの手: #{player_hand}"
   puts "相手の手: #{computer_hand}"
 
-  if (player_hand == NOFIGHT || computer_hand == NOFIGHT) 
-    puts '戦わない。が選択された為、じゃんけん最初の画面に戻ります.'
-    play_janken
+  if player_hand == NOFIGHT
+     puts '戦わない。が選択された為、じゃんけん最初の画面に戻ります.'
+     return play_janken
   elsif player_hand == computer_hand
     puts '引き分けです。じゃんけん最初の画面に戻ります.'
-    play_janken
+    return play_janken
   else
     # プレイヤーがじゃんけんに勝った時
     if (player_hand == ROCK && computer_hand == SCISSORS) ||
