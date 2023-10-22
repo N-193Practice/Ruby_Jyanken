@@ -22,8 +22,7 @@ def play_janken
   puts "相手の手: #{computer_hand}"
 
   if player_hand == NOFIGHT
-    puts '戦わない。が選択されたため、じゃんけん最初の画面に戻ります.'
-    return play_janken
+    puts '戦わない。が選択されたため、じゃんけんを終了します.'
   elsif player_hand == computer_hand
     puts '引き分けです。じゃんけん最初の画面に戻ります.'
     return play_janken
